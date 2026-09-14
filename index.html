@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="StellaNarrates.com — immersive fantasy narration and voice services.">
+  <title>StellaNarrates.com — Fantasy Stories, Brought to Life</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600&display=swap');
+
+    :root{
+      --ink:#11152b;
+      --ink-2:#171c39;
+      --cream:#f8f1df;
+      --gold:#e8c58a;
+      --violet:#7d55c7;
+      --violet-2:#a67ce0;
+      --mist:#ebe7f3;
+      --white:#fffdf8;
+      --line:rgba(232,197,138,.35);
+      --max:1180px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;background:var(--ink);color:var(--white);
+      font-family:Inter,system-ui,sans-serif;line-height:1.6;
+      overflow-x:hidden;
+    }
+    a{color:inherit;text-decoration:none}
+    .nav{
+      position:absolute;z-index:20;top:0;left:0;right:0;
+      height:92px;display:flex;align-items:center;justify-content:space-between;
+      padding:0 5vw;color:var(--cream);
+      background:linear-gradient(180deg,rgba(8,11,27,.72),transparent);
+    }
+    .brand{font-family:Cinzel,serif;letter-spacing:.08em;font-size:clamp(1rem,2vw,1.35rem)}
+    .brand span{color:var(--gold)}
+    .navlinks{display:flex;gap:30px;font-size:.82rem;letter-spacing:.12em;text-transform:uppercase}
+    .navlinks a{opacity:.85;transition:.25s}.navlinks a:hover{opacity:1;color:var(--gold)}
+    .nav-cta{border:1px solid var(--line);padding:10px 17px;border-radius:999px}
+    .hero{
+      min-height:100svh;position:relative;display:flex;align-items:center;
+      isolation:isolate;background:#0d1127;
+    }
+    .hero::before{
+      content:"";position:absolute;inset:0;z-index:-2;
+      background-image:url("hero-desktop.png");background-size:cover;background-position:center;
+    }
+    .hero::after{
+      content:"";position:absolute;inset:0;z-index:-1;
+      background:linear-gradient(90deg,rgba(7,10,28,.78) 0%,rgba(7,10,28,.48) 38%,rgba(7,10,28,.03) 72%),
+                 linear-gradient(0deg,rgba(7,10,28,.32),transparent 35%,rgba(7,10,28,.18));
+      pointer-events:none;
+    }
+    .hero-content{width:min(var(--max),90vw);margin:auto;padding-top:50px}
+    .eyebrow{font-size:.78rem;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;margin-bottom:20px}
+    h1,h2,h3{font-family:Cinzel,Georgia,serif;line-height:1.12;margin:0}
+    h1{font-size:clamp(3rem,6vw,6rem);max-width:720px;font-weight:500}
+    .hero-copy{font-family:Georgia,serif;font-size:clamp(1.05rem,1.7vw,1.3rem);max-width:510px;margin:25px 0;color:#eee9df}
+    .actions{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:12px;
+      padding:14px 23px;border-radius:999px;font-weight:600;letter-spacing:.04em;
+      transition:transform .25s,box-shadow .25s,background .25s;
+    }
+    .btn-primary{background:linear-gradient(135deg,var(--violet),#55369b);box-shadow:0 12px 40px rgba(91,54,160,.38)}
+    .btn-secondary{border:1px solid var(--line);background:rgba(12,15,35,.28);backdrop-filter:blur(8px)}
+    .btn:hover{transform:translateY(-2px);box-shadow:0 14px 42px rgba(0,0,0,.28)}
+    .scrollhint{
+      position:absolute;bottom:26px;left:50%;transform:translateX(-50%);
+      font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;color:var(--cream);opacity:.7
+    }
+    .scrollhint::after{content:"";display:block;width:1px;height:35px;background:var(--gold);margin:8px auto 0}
+
+    section{position:relative}
+    .section-inner{width:min(var(--max),90vw);margin:auto;padding:105px 0}
+    .light{background:var(--mist);color:var(--ink)}
+    .dark{background:var(--ink-2)}
+    .intro{text-align:center;max-width:820px;margin:auto}
+    .kicker{color:#8b62bd;letter-spacing:.22em;text-transform:uppercase;font-size:.75rem;font-weight:700}
+    .light .kicker{color:#72518f}
+    h2{font-size:clamp(2rem,4vw,3.6rem);margin:12px 0 20px}
+    .intro p{font-family:Georgia,serif;font-size:1.15rem;opacity:.8}
+
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:55px}
+    .card{
+      padding:34px;border:1px solid rgba(125,85,199,.18);border-radius:22px;
+      background:rgba(255,255,255,.65);box-shadow:0 18px 55px rgba(31,25,59,.07);
+      transition:transform .3s,box-shadow .3s;
+    }
+    .card:hover{transform:translateY(-5px);box-shadow:0 25px 70px rgba(31,25,59,.12)}
+    .card-icon{font-size:1.8rem;color:#7751a8;margin-bottom:17px}
+    .card h3{font-size:1.25rem;margin-bottom:10px}
+    .card p{margin:0;opacity:.72}
+
+    .demo{
+      background:
+        radial-gradient(circle at 85% 25%,rgba(125,85,199,.23),transparent 30%),
+        var(--ink-2);
+    }
+    .demo-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+    .demo h2{color:var(--cream)}
+    .demo p{color:#d8d4e0}
+    .player{
+      border:1px solid var(--line);border-radius:24px;padding:22px;
+      background:rgba(255,255,255,.045);backdrop-filter:blur(12px);
+    }
+    .player-row{display:flex;align-items:center;gap:17px}
+    .play{
+      width:56px;height:56px;border-radius:50%;border:1px solid var(--gold);
+      background:transparent;color:var(--gold);font-size:1.1rem;cursor:pointer
+    }
+    .wave{height:45px;display:flex;align-items:center;gap:4px;flex:1}
+    .wave i{display:block;width:3px;border-radius:4px;background:var(--gold);opacity:.75}
+    .wave i:nth-child(1){height:16%}.wave i:nth-child(2){height:35%}.wave i:nth-child(3){height:70%}.wave i:nth-child(4){height:45%}.wave i:nth-child(5){height:90%}.wave i:nth-child(6){height:55%}.wave i:nth-child(7){height:30%}.wave i:nth-child(8){height:75%}.wave i:nth-child(9){height:42%}.wave i:nth-child(10){height:62%}.wave i:nth-child(11){height:28%}.wave i:nth-child(12){height:50%}.wave i:nth-child(13){height:82%}.wave i:nth-child(14){height:36%}.wave i:nth-child(15){height:65%}.wave i:nth-child(16){height:25%}.wave i:nth-child(17){height:48%}.wave i:nth-child(18){height:72%}
+    .player small{display:block;color:#bdb8ca;margin-top:13px}
+
+    .process{background:#faf7f0;color:var(--ink)}
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:60px}
+    .step{padding:0 28px;border-left:1px solid rgba(17,21,43,.15)}
+    .step:first-child{border-left:0}
+    .num{font-family:Cinzel,serif;color:#8760aa;font-size:2rem}
+    .step h3{font-size:1.1rem;margin:10px 0}
+    .step p{font-size:.93rem;opacity:.68}
+
+    .contact{
+      background:linear-gradient(135deg,#171b38,#24163a);
+      overflow:hidden;
+    }
+    .contact::before{
+      content:"";position:absolute;width:480px;height:480px;border-radius:50%;
+      background:radial-gradient(circle,rgba(166,124,224,.18),transparent 68%);
+      right:-160px;top:-170px;
+    }
+    .contact-grid{display:grid;grid-template-columns:1fr .9fr;gap:70px;align-items:center}
+    .contact h2{color:var(--cream)}
+    .contact p{color:#d8d4e0;max-width:540px}
+    form{display:grid;gap:13px}
+    input,textarea{
+      width:100%;border:1px solid rgba(232,197,138,.3);background:rgba(255,255,255,.055);
+      color:var(--white);padding:15px 17px;border-radius:12px;font:inherit;outline:none
+    }
+    input:focus,textarea:focus{border-color:var(--gold)}
+    textarea{min-height:120px;resize:vertical}
+    ::placeholder{color:#aaa5b5}
+    footer{padding:30px 5vw;text-align:center;background:#0a0d20;color:#8f8b9d;font-size:.8rem}
+    .reveal{opacity:0;transform:translateY(25px);transition:opacity .8s,transform .8s}
+    .reveal.visible{opacity:1;transform:none}
+
+    @media(max-width:800px){
+      .nav{height:75px;padding:0 5vw}
+      .navlinks{display:none}
+      .hero{min-height:100svh;align-items:flex-start}
+      .hero::before{
+        background-image:url("hero-mobile.png");
+        background-position:center top;
+        background-size:cover;
+      }
+      .hero::after{
+        background:linear-gradient(180deg,rgba(7,10,28,.55) 0%,rgba(7,10,28,.10) 22%,rgba(7,10,28,.38) 58%,rgba(7,10,28,.88) 100%);
+      }
+      .hero-content{padding-top:145px;width:88vw}
+      .eyebrow{font-size:.64rem;letter-spacing:.22em}
+      h1{font-size:clamp(2.45rem,11vw,4rem);max-width:620px}
+      .hero-copy{font-size:1.02rem;max-width:450px;margin:18px 0 24px}
+      .btn{padding:13px 19px}
+      .section-inner{padding:75px 0}
+      .cards,.demo-grid,.contact-grid{grid-template-columns:1fr;gap:24px}
+      .cards{margin-top:35px}
+      .steps{grid-template-columns:1fr 1fr;gap:28px}
+      .step{padding:0 0 0 20px;border-left:1px solid rgba(17,21,43,.15)}
+      .step:nth-child(3){border-left:0}
+    }
+    @media(max-width:480px){
+      .hero-content{padding-top:140px}
+      .hero-copy{max-width:330px}
+      .actions{gap:9px}
+      .btn{width:auto}
+      .steps{grid-template-columns:1fr}
+      .step:nth-child(3){border-left:1px solid rgba(17,21,43,.15)}
+    }
+    @media(prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <a class="brand" href="#">Stella<span>Narrates</span>.com</a>
+    <nav class="navlinks" aria-label="Main navigation">
+      <a href="#services">Services</a>
+      <a href="#samples">Samples</a>
+      <a href="#process">Process</a>
+      <a class="nav-cta" href="#contact">Get in touch</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content reveal">
+        <div class="eyebrow">Immersive Fantasy Narration</div>
+        <h1>Fantasy Stories,<br>Brought to Life.</h1>
+        <p class="hero-copy">Epic worlds. Unforgettable characters. Let the story live in your ears.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#contact">Get in Touch <span>→</span></a>
+          <a class="btn btn-secondary" href="#samples">Hear a Sample <span>▶</span></a>
+        </div>
+      </div>
+      <a class="scrollhint" href="#services">Explore</a>
+    </section>
+
+    <section id="services" class="light">
+      <div class="section-inner">
+        <div class="intro reveal">
+          <div class="kicker">The art of the voice</div>
+          <h2>Every world deserves a voice.</h2>
+          <p>From whispered secrets to ancient battles, narration should make the listener forget they are listening.</p>
+        </div>
+        <div class="cards">
+          <article class="card reveal"><div class="card-icon">✦</div><h3>Fantasy & Fiction</h3><p>Atmospheric narration for fantasy novels, audiobooks and stories where the world matters as much as the words.</p></article>
+          <article class="card reveal"><div class="card-icon">♬</div><h3>Character Voices</h3><p>Distinct, believable characters that help dialogue feel alive without turning the story into a performance gimmick.</p></article>
+          <article class="card reveal"><div class="card-icon">◈</div><h3>Custom Narration</h3><p>Trailers, lore, podcasts, game worlds and other projects that need a strong storytelling voice.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="samples" class="demo dark">
+      <div class="section-inner demo-grid">
+        <div class="reveal">
+          <div class="kicker">Listen</div>
+          <h2>Step into the story.</h2>
+          <p>A proper site should let the voice sell the service. Drop real audio samples into these players when they are ready.</p>
+          <a class="btn btn-secondary" href="#contact">Request a Custom Sample →</a>
+        </div>
+        <div class="player reveal">
+          <div class="player-row">
+            <button class="play" aria-label="Play sample">▶</button>
+            <div>
+              <strong>Fantasy Character Sample</strong><br>
+              <small>Placeholder audio player</small>
+            </div>
+          </div>
+          <div class="wave" aria-hidden="true">
+            <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+          </div>
+          <small>00:00 &nbsp; ━━━━━━━━━━━━━━━ &nbsp; 02:18</small>
+        </div>
+      </div>
+    </section>
+
+    <section id="process" class="process">
+      <div class="section-inner">
+        <div class="intro reveal">
+          <div class="kicker">From manuscript to magic</div>
+          <h2>A simple process. A polished result.</h2>
+        </div>
+        <div class="steps">
+          <div class="step reveal"><div class="num">01</div><h3>Share the story</h3><p>Send the manuscript, brief, character notes or whatever material you have.</p></div>
+          <div class="step reveal"><div class="num">02</div><h3>Find the voice</h3><p>Agree the tone, pacing and character direction before the full recording.</p></div>
+          <div class="step reveal"><div class="num">03</div><h3>Record & refine</h3><p>Clean, edit and shape the narration so it sounds natural and immersive.</p></div>
+          <div class="step reveal"><div class="num">04</div><h3>Deliver</h3><p>Receive polished, production-ready audio in the format your project needs.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="section-inner contact-grid">
+        <div class="reveal">
+          <div class="kicker">Begin an adventure</div>
+          <h2>Have a story that needs a voice?</h2>
+          <p>Tell Stella a little about the project, the world and what you need. She'll come back with the next step.</p>
+        </div>
+        <form class="reveal" onsubmit="event.preventDefault(); alert('Demo form — connect this form to Stella’s real email or form endpoint.');">
+          <input aria-label="Name" placeholder="Your name" required>
+          <input type="email" aria-label="Email" placeholder="Email address" required>
+          <input aria-label="Project" placeholder="Project / book title">
+          <textarea aria-label="Message" placeholder="Tell me about your story…"></textarea>
+          <button class="btn btn-primary" type="submit">Send Enquiry →</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>© <span id="year"></span> StellaNarrates.com · Fantasy stories, brought to life.</footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+    }, {threshold:.12});
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    const play = document.querySelector('.play');
+    play.addEventListener('click', () => {
+      play.textContent = play.textContent === '▶' ? 'Ⅱ' : '▶';
+    });
+  </script>
+</body>
+</html>
